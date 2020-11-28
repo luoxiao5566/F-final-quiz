@@ -31,6 +31,7 @@ class GroupDetail extends Component {
       const result = await data.json();
       console.log(JSON.stringify(result));
       this.setState({ groups: result });
+      location.reload(true);
     } catch (err) {
       console.log(err);
     }
