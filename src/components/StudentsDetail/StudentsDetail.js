@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-
+// TODO GTB-工程实践: - 针对整个文件，console.log不应该被提交上来
+// TODO GTB-工程实践: - StudentsDetail这个组件的名字不合理，叫Students更合适一些
 class StudentsDetail extends Component {
   constructor(props) {
     super(props);
@@ -16,6 +17,7 @@ class StudentsDetail extends Component {
 
   async getStudent() {
     try {
+      // TODO GTB-工程实践: - API相关的代码应该被提取到一个独立的文件
       const data = await fetch('http://localhost:8080/trainees?grouped=false', {
         method: 'GET',
         mode: 'cors',
@@ -53,6 +55,7 @@ class StudentsDetail extends Component {
 
   async handleAddStudent() {
     try {
+      // TODO GTB-工程实践: - API相关的代码应该被提取到一个独立的文件
       const data = await fetch('http://localhost:8080/trainees', {
         method: 'POST',
         body: JSON.stringify({name:this.state.name}),
@@ -68,10 +71,14 @@ class StudentsDetail extends Component {
   }
 
   render() {
+    // TODO GTB-完成度: - 针对于input的hidden： 需求上是时候要添加学员的button和input互斥地出现，不是input自己shown和hidden
+    // TODO GTB-知识点: - 针对input的onKeyDown: 使用onKeyUp更合理
     return (
-      <div className="studentDetail">
+        // TODO GTB-知识点: - 没有使用语义化的标签section
+        <div className="studentDetail">
         <h2>学生列表</h2>
         <div className="student">
+          {/* // TODO feedback: 列表元素没有使用ul li */}
           {this.state.students.map((item) => (
             <div key={item.id}>
               {item.id}.{item.name}
